@@ -89,6 +89,7 @@ app.post('/api/shorten', async (req, res) => {
     await url.save();
 
     return res.status(201).json({
+      // FIX: Ensure this line uses BACKTICKS (`), not single quotes (')
       shortUrl: ${process.env.BASE_URL}/${shortCode},
       shortCode,
       originalUrl,
@@ -135,6 +136,7 @@ app.get('/api/analytics/:shortCode', async (req, res) => {
     return res.json({
       originalUrl: url.originalUrl,
       shortCode: url.shortCode,
+      // FIX: Ensure this line uses BACKTICKS (`), not single quotes (')
       shortUrl: ${process.env.BASE_URL}/${url.shortCode},
       createdAt: url.createdAt,
       clicks: url.clicks,
@@ -153,6 +155,7 @@ app.get('/api/urls', async (req, res) => {
       .limit(10);
     
     const formattedUrls = recentUrls.map(url => ({
+      // FIX: Ensure this line uses BACKTICKS (`), not single quotes (')
       shortUrl: ${process.env.BASE_URL}/${url.shortCode},
       shortCode: url.shortCode,
       originalUrl: url.originalUrl,
